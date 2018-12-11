@@ -21,4 +21,4 @@ class TestConfig(Config):
 
 
 class HerokuConfig(DevelopmentConfig):
-    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')
+    SQLALCHEMY_DATABASE_URI = os.getenv('HEROKU_POSTGRESQL_MAROON_URL')
