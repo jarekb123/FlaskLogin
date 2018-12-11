@@ -5,7 +5,6 @@ from flask_bcrypt import Bcrypt
 
 
 app = Flask(__name__)
-print(os.getenv('APP_SETTINGS', 'webapp.config.HerokuConfig'))
 app.config.from_object('webapp.config.HerokuConfig')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
