@@ -8,7 +8,8 @@ class TestUserModel(BaseTestCase):
     def test_encode_auth_token(self):
         user = User(
             email='test@test.com',
-            password='test'
+            password='test',
+            language='en_US'
         )
         db.session.add(user)
         db.session.commit()
@@ -19,7 +20,8 @@ class TestUserModel(BaseTestCase):
     def test_decode_auth_token(self):
         user = User(
             email='test@test.com',
-            password='test'
+            password='test',
+            language='en_US'
         )
 
         db.session.add(user)

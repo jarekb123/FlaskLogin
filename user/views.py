@@ -1,85 +1,112 @@
-from flask import Blueprint, request, make_response, jsonify
-from flask.views import MethodView
+from flask_restplus import fields, Resource
 
-from webapp.app import app, db
-from user.models import User
+from webapp.app import api
+from user.service import *
 
-auth_blueprint = Blueprint('auth', __name__)
+ns = api.namespace('auth', description='Auth operations')
+
+login_request = ns.model('Login request', {
+    'email': fields.String(description='User\'s e-mail address'),
+    'password': fields.String(description='Users\'s password')
+})
+
+login_response = ns.model('Login response', {
+    'status': fields.String(description='Login request status'),
+    'auth_token': fields.String(required=False, description='Auth token'),
+})
 
 
-class RegisterAPI(MethodView):
-    """ User Registration Endpoint """
+class LoginResponse:
+    def __init__(self, status, auth_token=None):
+        self.status = status
+        self.auth_token = auth_token
 
+
+@ns.route('/login')
+class LoginResource(Resource):
+
+    @ns.doc('post_login')
+    @ns.expect(login_request)
+    @ns.marshal_with(login_response)
     def post(self):
-        post_data = request.get_json()
-
-        user = User.query.filter_by(email=post_data.get('email')).first()
-        if not user:
-            try:
-                user = User(
-                    email=post_data.get('email'),
-                    password=post_data.get('password')
-                )
-                db.session.add(user)
-                db.session.commit()
-
-                auth_token = user.encode_auth_token(user.id)
-                responseObj = {
-                    'status': 'success',
-                    'message': 'Successfully registered',
-                    'auth_token': auth_token.decode()
-                }
-                return make_response(jsonify(responseObj)), 201
-            except Exception as e:
-                responseObj = {
-                    'status': 'fail',
-                    'message': 'Error occured. Please try again'
-                }
-                return make_response(jsonify(responseObj)), 401
-        else:
-            responseObj = {
-                'status': 'fail',
-                'message': 'User already exists. Please Log in.'
-            }
-            return make_response(jsonify(responseObj)), 202
+        """ Login user to the app """
+        data = api.payload
+        token = login_user(data['email'], data['password'])
+        if token:
+            return LoginResponse('success', token), 200
+        return LoginResponse('fail'), 500
 
 
-registration_view = RegisterAPI.as_view('register_api')
-auth_blueprint.add_url_rule(
-    '/auth/register',
-    view_func=registration_view,
-    methods=['POST']
-)
+register_request = ns.model('Register request', {
+    'email': fields.String(required=True, description='User\'s email address'),
+    'password': fields.String(required=True, description='User\'s password'),
+    'lang': fields.String(required=True, description='User\'s language'),
+    'phone': fields.String(required=False, description='User\'s phone number'),
+    'city': fields.String(required=False, description='Users\'s city')
+})
+
+register_response = ns.model('Register response', {
+    'status': fields.String()
+})
 
 
-class LoginAPI(MethodView):
-    """ User Login Resource """
+class RegisterResponse:
+    def __init__(self, status):
+        self.status = status
 
+
+@ns.route('/register')
+class RegisterResource(Resource):
+
+    @ns.doc('register_post')
+    @ns.expect(register_request)
+    @ns.marshal_with(register_response)
     def post(self):
-        post_data = request.get_json()
-        try:
-            user = User.query.filter_by(
-                email=post_data.get('email')
-            ).first()
-            auth_token = user.encode_auth_token(user.id)
-            if auth_token:
-                response_obj = {
-                    'status': 'success',
-                    'auth_token': auth_token.decode()
-                }
-                return make_response(jsonify(response_obj)), 200
-        except Exception as e:
-            print(e)
-            response_obj = {
-                'status': 'fail',
-                'message': 'Try again'
-            }
-            return make_response(jsonify(response_obj)), 500
+        """ Register user in the app """
+        data = api.payload
+        user = register_user(data['email'], data['password'], data.get('lang'), data.get('phone'), data.get('city'))
+        if user:
+            return RegisterResponse('success'), 201
+
+    @ns.errorhandler(ResourceAlreadyCreated)
+    @ns.marshal_with(register_response, code=202)
+    def handle_user_already_registered(self):
+        """ Handler: User already registered """
+        return RegisterResponse('user_already_exist'), 202
 
 
-login_view = LoginAPI.as_view('login_api')
-auth_blueprint.add_url_rule(
-    '/auth/login',
-    view_func=login_view,
-    methods=['POST']
-)
+user_response = ns.model('User Model', {
+    'id': fields.Integer(),
+    'email': fields.String(),
+    'registered_on': fields.DateTime(),
+    'language': fields.String(),
+    'phone': fields.String(),
+    'city': fields.String()
+})
+
+header_parser = ns.parser()
+header_parser.add_argument('Authentication', location='headers')
+
+
+@ns.route('/user')
+class UserResource(Resource):
+
+    @ns.doc('get_user')
+    @ns.marshal_with(user_response)
+    @ns.expect(header_parser)
+    def get(self):
+        args = header_parser.parse_args()
+        token_header = args['Authentication']
+        splitted_token = token_header.split(" ")
+        token = splitted_token[1]
+
+        print(token)
+
+        user_id = User.decode_auth_token(token)
+        return User.query.get(user_id)
+
+
+
+
+
+

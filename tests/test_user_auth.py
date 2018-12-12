@@ -18,10 +18,27 @@ class TestAuthBlueprint(BaseTestCase):
             )
             data = json.loads(response.data.decode())
             self.assertTrue(data['status'] == 'success')
-            self.assertTrue(data['message'] == 'Successfully registered')
-            self.assertTrue(data['auth_token'])
             self.assertTrue(response.content_type == 'application/json')
             self.assertEqual(response.status_code, 201)
+
+    def test_registration_already_created_user(self):
+        with self.client:
+            # user not registered yet - register one
+            self.client.post(
+                '/auth/register',
+                data=self.mock_user,
+                content_type='application/json'
+            )
+            # try to register again
+            response = self.client.post(
+                '/auth/register',
+                data=self.mock_user,
+                content_type='application/json'
+            )
+            data = json.loads(response.data.decode())
+            self.assertEqual(data['status'],'user_already_exist')
+            self.assertEqual(response.content_type, 'application/json')
+            self.assertEqual(response.status_code, 202)
 
     def test_registered_user_login(self):
         with self.client:
@@ -40,4 +57,17 @@ class TestAuthBlueprint(BaseTestCase):
             self.assertTrue(data['status'] == 'success')
             self.assertTrue(data['auth_token'])
             self.assertTrue(response_login.content_type == 'application/json')
-            self.assertEqual(response_login.status_code, 200)
+            self.assert200(response_login)
+
+    def test_unregistered_user_login(self):
+        with self.client:
+            response = self.client.post(
+                '/auth/login',
+                data=self.mock_user,
+                content_type='application/json'
+            )
+            data = json.loads(response.data.decode())
+            self.assertTrue(data['status'] == 'fail')
+            self.assertTrue(response.content_type == 'application/json')
+            self.assert500(response)
+

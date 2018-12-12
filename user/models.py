@@ -11,18 +11,24 @@ class User(db.Model):
     password = db.Column(db.String(255), nullable=False)
     registered_on = db.Column(db.DateTime, nullable=False)
     admin = db.Column(db.Boolean, nullable=False, default=False)
+    language = db.Column(db.String(5), nullable=False, default="en_US")
+    phone = db.Column(db.String(10), nullable=True)
+    city = db.Column(db.String(255), nullable=True)
 
-    def __init__(self, email, password, admin=False):
+    def __init__(self, email, password, language, phone=None, city=None, admin=False):
         self.email = email
-        self.password = bcrypt.generate_password_hash(password)
+        self.password = bcrypt.generate_password_hash(password, 10).decode('utf-8')
         self.registered_on = datetime.datetime.now()
         self.admin = admin
+        self.language = language
+        self.phone = phone,
+        self.city = city
 
     def encode_auth_token(self, user_id):
         """ Generates Auth Token """
         try:
             payload = {
-                'exp': datetime.datetime.utcnow() + datetime.timedelta(days=0, seconds=10),
+                'exp': datetime.datetime.utcnow() + datetime.timedelta(days=0, minutes=10),
                 'iat': datetime.datetime.utcnow(),
                 'sub': user_id
             }

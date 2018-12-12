@@ -1,0 +1,2 @@
+class ResourceAlreadyCreated(Exception):
+    pass

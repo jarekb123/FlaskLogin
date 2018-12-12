@@ -10,6 +10,3 @@ class TestTestingConfig(TestCase):
     def test_app_is_testing(self):
         self.assertFalse(app.config['SECRET_KEY'] is 'secret_key')
         self.assertTrue(app.config['DEBUG'])
-        self.assertTrue(
-            app.config['SQLALCHEMY_DATABASE_URI'] == 'postgresql://admin:admin@localhost/login_test'
-        )

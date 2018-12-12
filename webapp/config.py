@@ -22,4 +22,4 @@ class DevelopmentConfig(Config):
 class TestConfig(Config):
     SQLALCHEMY_DATABASE_URI = postgres_local_base + '_test'
     DEBUG = True
-    TESTING = True
+    # TESTING = True
