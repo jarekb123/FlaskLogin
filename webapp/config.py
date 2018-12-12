@@ -1,7 +1,7 @@
 import os
 
 db_name = "login"
-postgres_local_base = 'postgresql://admin:admin@localhost/' + db_name
+postgres_local_base = 'postgresql://postgres:postgres@localhost:5433/' + db_name
 
 
 class Config:
