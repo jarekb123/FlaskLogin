@@ -17,12 +17,16 @@ class User(db.Model):
 
     def __init__(self, email, password, language, phone=None, city=None, admin=False):
         self.email = email
-        self.password = bcrypt.generate_password_hash(password, 10).decode('utf-8')
+        self.password = User.generate_password_hash(password)
         self.registered_on = datetime.datetime.now()
         self.admin = admin
         self.language = language
         self.phone = phone,
         self.city = city
+
+    @staticmethod
+    def generate_password_hash(password):
+        return bcrypt.generate_password_hash(password, 10).decode('utf-8')
 
     def encode_auth_token(self, user_id):
         """ Generates Auth Token """
@@ -43,11 +47,18 @@ class User(db.Model):
     @staticmethod
     def decode_auth_token(auth_token):
         """ Decodes the auth token """
-        try:
-            payload = jwt.decode(auth_token, app.config.get('SECRET_KEY'))
-            return payload['sub']
-        except jwt.ExpiredSignatureError:
-            return 'Signature expired. Please log in again.'
-        except jwt.InvalidTokenError:
-            return 'Invalid token. Please log in again.'
+        payload = jwt.decode(auth_token, app.config.get('SECRET_KEY'))
+        return payload['sub']
 
+
+class BlacklistToken(db.Model):
+    """ Token Model for storing JWT tokens """
+    __tablename__ = "blacklist_tokens"
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    token = db.Column(db.String(500), unique=True, nullable=False)
+    blacklisted_on = db.Column(db.DateTime, nullable=False)
+
+    def __init__(self, token):
+        self.token = token
+        self.blacklisted_on = datetime.datetime.now()

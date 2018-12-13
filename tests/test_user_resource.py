@@ -21,13 +21,12 @@ class TestUsersResource(BaseTestCase):
             token = user.encode_auth_token(user.id)
 
             response = self.client.get(
-                '/user',
+                '/user/me',
                 headers=dict(
                     Authorization='Bearer ' + token.decode()
                 )
             )
             data = json.loads(response.data.decode())
             self.assert200(response)
-            self.assertEqual(data['status'], 'success')
-            self.assertEqual(data['user']['email'], 'email@email.com')
-            self.assertEqual(data['user']['phone'], '123456789')
+            self.assertEqual(data['email'], 'email@email.com')
+            self.assertEqual(data['phone'], '123456789')

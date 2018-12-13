@@ -5,7 +5,7 @@ from flask_restplus import Api
 
 
 app = Flask(__name__)
-app.config.from_object('webapp.config.HerokuConfig')
+app.config.from_object('webapp.config.DevelopmentConfig')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 api = Api(app)
