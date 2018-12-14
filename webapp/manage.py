@@ -8,7 +8,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from webapp.app import app, db
 from user import models
 
-app.config.from_object('webapp.config.DevelopmentConfig')
+app.config.from_object('webapp.config.HerokuConfig')
 
 migrate = Migrate(app, db)
 manager = Manager(app)

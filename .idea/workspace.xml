@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="49af45e3-fcc0-45df-ac76-4ce75f7e12ef" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/errors/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/errors/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_user_auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_user_auth.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_user_resource.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_user_resource.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/manage.py" afterDir="false" />
-    </list>
+    <list default="true" id="49af45e3-fcc0-45df-ac76-4ce75f7e12ef" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,8 +82,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/test_user_auth.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="249">
-              <caret line="89" column="57" selection-start-line="89" selection-start-column="57" selection-end-line="89" selection-end-column="57" />
+            <state relative-caret-position="443">
+              <caret line="92" column="30" lean-forward="true" selection-start-line="92" selection-start-column="30" selection-end-line="92" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -222,7 +211,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python tests.Unittests for test_user_auth.TestAuthBlueprint.test_valid_logout">
+  <component name="RunManager" selected="Python tests.Unittests in tests">
     <configuration name="Unittests for test_user_auth.TestAuthBlueprint.test_registered_user_login" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="login_temp" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -307,8 +296,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.Unittests for test_user_auth.TestAuthBlueprint.test_valid_logout" />
         <item itemvalue="Python tests.Unittests in tests" />
+        <item itemvalue="Python tests.Unittests for test_user_auth.TestAuthBlueprint.test_valid_logout" />
         <item itemvalue="Python tests.Unittests for test_user_resource.TestUsersResource.test_get_user_data" />
         <item itemvalue="Python tests.Unittests for test_user_auth.TestAuthBlueprint.test_registered_user_login" />
         <item itemvalue="Python tests.Unittests for test_user_auth.TestAuthBlueprint.test_unregistered_user_login" />
@@ -329,21 +318,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_for_test_user_resource_TestUsersResource_test_get_user_data - 2018.12.12 at 14h 38m 02s.xml">
-      <configuration name="Unittests for test_user_resource.TestUsersResource.test_get_user_data" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_tests - 2018.12.13 at 12h 09m 20s.xml">
-      <configuration name="Unittests in tests" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_tests - 2018.12.13 at 12h 09m 46s.xml">
-      <configuration name="Unittests in tests" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_tests - 2018.12.13 at 12h 11m 26s.xml">
-      <configuration name="Unittests in tests" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_tests - 2018.12.13 at 12h 11m 32s.xml">
-      <configuration name="Unittests in tests" configurationId="tests" />
-    </history-entry>
     <history-entry file="Unittests_in_tests - 2018.12.13 at 12h 12m 12s.xml">
       <configuration name="Unittests in tests" configurationId="tests" />
     </history-entry>
@@ -359,6 +333,21 @@
     <history-entry file="Unittests_for_test_user_auth_TestAuthBlueprint_test_valid_logout - 2018.12.13 at 14h 21m 44s.xml">
       <configuration name="Unittests for test_user_auth.TestAuthBlueprint.test_valid_logout" configurationId="tests" />
     </history-entry>
+    <history-entry file="Unittests_for_test_user_auth_TestAuthBlueprint_test_valid_logout - 2018.12.13 at 14h 22m 39s.xml">
+      <configuration name="Unittests for test_user_auth.TestAuthBlueprint.test_valid_logout" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_user_auth_TestAuthBlueprint_test_valid_logout - 2018.12.13 at 14h 22m 40s.xml">
+      <configuration name="Unittests for test_user_auth.TestAuthBlueprint.test_valid_logout" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_user_auth_TestAuthBlueprint_test_valid_logout - 2018.12.13 at 14h 22m 44s.xml">
+      <configuration name="Unittests for test_user_auth.TestAuthBlueprint.test_valid_logout" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_user_auth_TestAuthBlueprint_test_valid_logout - 2018.12.13 at 14h 22m 55s.xml">
+      <configuration name="Unittests for test_user_auth.TestAuthBlueprint.test_valid_logout" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_tests - 2018.12.13 at 14h 23m 12s.xml">
+      <configuration name="Unittests in tests" configurationId="tests" />
+    </history-entry>
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -371,18 +360,19 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.28797814" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="0" weight="0.2386609" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="0" visible="true" weight="0.2386609" />
       <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="2" weight="0.32937366" />
       <window_info anchor="bottom" id="Message" order="3" />
       <window_info anchor="bottom" id="Find" order="4" weight="0.32937366" />
       <window_info anchor="bottom" id="Version Control" order="5" weight="0.32937366" />
       <window_info anchor="bottom" id="Run" order="6" weight="0.32937366" />
-      <window_info active="true" anchor="bottom" id="Debug" order="7" visible="true" weight="0.39956802" />
+      <window_info anchor="bottom" id="Debug" order="7" weight="0.39956802" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="10" weight="0.32937366" />
@@ -398,11 +388,6 @@
           <url>file://$PROJECT_DIR$/tests/test_user_resource.py</url>
           <line>22</line>
           <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/tests/test_user_auth.py</url>
-          <line>89</line>
-          <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -680,8 +665,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_user_auth.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="89" column="57" selection-start-line="89" selection-start-column="57" selection-end-line="89" selection-end-column="57" />
+        <state relative-caret-position="443">
+          <caret line="92" column="30" lean-forward="true" selection-start-line="92" selection-start-column="30" selection-end-line="92" selection-end-column="30" />
         </state>
       </provider>
     </entry>
