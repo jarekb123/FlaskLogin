@@ -108,7 +108,7 @@ header_parser = ns.parser()
 header_parser.add_argument('Authorization', location='headers')
 
 
-@ns.route('/me')
+@ns.route('/profile')
 class UserResource(Resource):
 
     @ns.errorhandler(KeyError)
