@@ -17,5 +17,14 @@ db = SQLAlchemy(app)
 
 bcrypt = Bcrypt()
 
+
+@app.after_request
+def after_request(response):
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+    response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
+    return response
+
+
 from user.views import ns as user_ns
 api.add_namespace(user_ns)
