@@ -99,7 +99,7 @@ user_model = ns.model('User Model', {
 update_user_request = ns.model('Update User Request Model', {
     'email': fields.String(required=True, description='User\'s email address'),
     'password': fields.String(required=False, description='User\'s password'),
-    'language': fields.String(required=True, description='User\'s language'),
+    'language': fields.String(required=False, description='User\'s language'),
     'phone': fields.String(required=True, description='User\'s phone number'),
     'city': fields.String(required=True, description='User\'s city')
 })
