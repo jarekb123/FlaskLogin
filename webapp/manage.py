@@ -5,13 +5,16 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from flask_cors import CORS
 from flask_script import Manager, Server
 from flask_migrate import Migrate, MigrateCommand
-from webapp import app, db
+from webapp import app, db, api
 
 from user import models
 
 CORS(app)
 
 app.config.from_object('webapp.config.HerokuConfig')
+
+from user.views import ns as user_ns
+api.add_namespace(user_ns)
 
 migrate = Migrate(app, db)
 manager = Manager(app)

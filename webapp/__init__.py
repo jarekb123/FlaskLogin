@@ -12,7 +12,3 @@ api = Api(app)
 db = SQLAlchemy(app)
 
 bcrypt = Bcrypt()
-
-
-from user.views import ns as user_ns
-api.add_namespace(user_ns)
