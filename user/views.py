@@ -1,7 +1,7 @@
 import jwt
 from flask_restplus import fields, Resource
 
-from webapp.app import api
+from webapp import api
 from user.service import *
 
 ns = api.namespace('user', description='User related operations')

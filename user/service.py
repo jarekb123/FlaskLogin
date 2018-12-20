@@ -1,4 +1,4 @@
-from webapp.app import bcrypt, db
+from webapp import bcrypt, db
 from user.models import User, BlacklistToken
 from errors import ResourceAlreadyCreated, ResourceNotExist
 

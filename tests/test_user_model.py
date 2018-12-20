@@ -1,4 +1,4 @@
-from webapp.app import db
+from webapp import db
 from user.models import User
 from tests.base import BaseTestCase
 
