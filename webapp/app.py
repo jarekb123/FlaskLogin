@@ -1,19 +1,11 @@
-import os
-import sys
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_restplus import Api
-from flask_cors import CORS
-
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config.from_object('webapp.config.HerokuConfig')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-CORS(app)
 
 api = Api(app)
 
@@ -24,7 +16,3 @@ bcrypt = Bcrypt()
 
 from user.views import ns as user_ns
 api.add_namespace(user_ns)
-
-if __name__ == '__main__':
-    port = os.getenv("PORT")
-    app.run('0.0.0.0', port, debug=True)
