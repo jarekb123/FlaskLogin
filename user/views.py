@@ -72,10 +72,10 @@ class RegisterResponse:
 @ns.route('/register')
 class RegisterResource(Resource):
 
+    @cross_origin()
     @ns.doc('register_post')
     @ns.expect(register_request)
     @ns.marshal_with(register_response)
-    @cross_origin()
     def post(self):
         """ Register user in the app """
         data = api.payload
