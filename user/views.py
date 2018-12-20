@@ -1,5 +1,6 @@
 import jwt
 from flask_restplus import fields, Resource, cors
+from flask_cors import cross_origin
 
 from webapp.app import api
 from user.service import *
@@ -40,7 +41,7 @@ class LoginResource(Resource):
     @ns.doc('post_login')
     @ns.expect(login_request)
     @ns.marshal_with(login_response)
-    @cors.crossdomain(origin='*')
+    @cross_origin()
     def post(self):
         """ Login user to the app """
         data = api.payload
@@ -74,7 +75,7 @@ class RegisterResource(Resource):
     @ns.doc('register_post')
     @ns.expect(register_request)
     @ns.marshal_with(register_response)
-    @cors.crossdomain(origin='*')
+    @cross_origin()
     def post(self):
         """ Register user in the app """
         data = api.payload
@@ -124,7 +125,7 @@ class UserResource(Resource):
     @ns.doc('get_user')
     @ns.marshal_with(user_model)
     @ns.expect(header_parser)
-    @cors.crossdomain(origin='*')
+    @cross_origin()
     def get(self):
         """ Get signed in user authenticated by JWT token """
         args = header_parser.parse_args()
@@ -138,6 +139,7 @@ class UserResource(Resource):
     @ns.doc("put_user")
     @ns.expect(update_user_request, header_parser)
     @ns.marshal_with(user_model)
+    @cross_origin()
     def put(self):
         """ Update current user """
         args = header_parser.parse_args()
@@ -152,7 +154,7 @@ class LogoutResource(Resource):
 
     @ns.doc('logout_user')
     @ns.expect(header_parser)
-    @cors.crossdomain(origin='*')
+    @cross_origin()
     def get(self):
         header_args = header_parser.parse_args()
         token = header_args['Authorization'].split(" ")[1]
