@@ -2,7 +2,7 @@ from flask import json
 
 from tests.base import BaseTestCase
 from user.models import User
-from webapp import db
+from webapp.app import db
 
 
 class TestUsersResource(BaseTestCase):

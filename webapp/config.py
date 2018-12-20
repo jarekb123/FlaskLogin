@@ -5,6 +5,7 @@ postgres_local_base = 'postgresql://postgres:postgres@localhost:5433/' + db_name
 
 
 class Config:
+    CORS =True
     DEBUG = False
     SECRET_KEY = os.getenv('SECRET_KEY', 'secret_key')
 

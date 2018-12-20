@@ -1,5 +1,5 @@
 from flask_testing import TestCase
-from webapp import app
+from webapp.app import app
 
 
 class TestTestingConfig(TestCase):
