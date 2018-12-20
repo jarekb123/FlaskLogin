@@ -135,7 +135,6 @@ class UserResource(Resource):
     @ns.doc("put_user")
     @ns.expect(update_user_request, header_parser)
     @ns.marshal_with(user_model)
-    @cross_origin()
     def put(self):
         """ Update current user """
         args = header_parser.parse_args()
